@@ -4,7 +4,7 @@ DIRNAME = os.path.dirname(__file__)
 DEFAULT_CHARSET = 'utf-8'
 
 DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = os.path.join(DIRNAME, 'tagging_test.db')
+DATABASE_NAME = os.path.join(DIRNAME, 'tagging_test.sqlite')
 
 #DATABASE_ENGINE = 'mysql'
 #DATABASE_NAME = 'tagging_test'
@@ -25,3 +25,10 @@ INSTALLED_APPS = (
     'tagging',
     'tagging.tests',
 )
+
+MULTILINGUAL_TAGS = True
+LANGUAGES = (
+    ('en', 'English'),
+    ('ru', 'Russian'),
+)
+DEFAULT_LANGUAGE = 1
