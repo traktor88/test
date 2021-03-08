@@ -8,7 +8,7 @@ from tagging import settings
 from tagging.models import Tag
 from tagging.utils import parse_tag_input
 
-class TagAdminForm(forms.ModelForm):
+class AdminTagForm(forms.ModelForm):
     class Meta:
         model = Tag
 
@@ -16,7 +16,7 @@ class TagAdminForm(forms.ModelForm):
         value = self.cleaned_data['name']
         tag_names = parse_tag_input(value)
         if len(tag_names) > 1:
-            raise forms.ValidationError(_('Multiple tags were given.'))
+            raise ValidationError(_('Multiple tags were given.'))
         elif len(tag_names[0]) > settings.MAX_TAG_LENGTH:
             raise forms.ValidationError(
                 _('A tag may be no more than %s characters long.') %
