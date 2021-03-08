@@ -46,21 +46,19 @@ for dirpath, dirnames, filenames in os.walk(tagging_dir):
         data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
 
 # Dynamically calculate the version based on tagging.VERSION
-version_tuple = (0, 3, 1)
-if isinstance(version_tuple[-1], basestring):
-    _version_template = '.'.join(('%d',) * (len(version_tuple)-1)) + '_%s'
+version_tuple = (0, 3, 'pre')
+if version_tuple[2] is not None:
+    version = "%d.%d_%s" % version_tuple
 else:
-    _version_template = '.'.join(('%d',) * len(version_tuple))
-
-version = _version_template % version_tuple
+    version = "%d.%d" % version_tuple[:2]
 
 setup(
-    name = 'django-tagging-ng',
+    name = 'tagging',
     version = version,
-    description = 'Enhanced tagging application for Django, based on django-tagging',
-    author = 'Alexander Artemenko',
-    author_email = 'svetlyak.40wt@gmail.com',
-    url = 'http://github.com/svetlyak40wt/django-tagging-ng/',
+    description = 'Generic tagging application for Django',
+    author = 'Jonathan Buchanan',
+    author_email = 'jonathan.buchanan@gmail.com',
+    url = 'http://code.google.com/p/django-tagging/',
     packages = packages,
     data_files = data_files,
     classifiers = ['Development Status :: 4 - Beta',
